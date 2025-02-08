@@ -4,75 +4,286 @@ globs:
 ---
 *This is the rules for memories of AI, Lesson learned, and scratchpad for this project in all of the interactions from the user this will automatically read.* `ALWAYS ACTIVATE THIS RULES!!!`
 
-# Memory rules ` [memories.md](mdc:.cursor/memories.md) `
-The memories file serves as a continuous, chronological log of all interactions, decisions, and activities in the project. Frules:
+# Instructions
+*Tules for memories of AI, Lesson learned, and scratchpad for this project in all of the interactions from the user this will automatically read.*
 
-1. **Interaction Format**:
+# CORE RULES:
+
+## Core Behavior
+- Always read and reference the `@memories.md`, `@lessons-learned.md`, and `@scratchpad.md` files for context
+- Follow documentation standards for inline comments, changelog, and project documentation
+- Write clean, maintainable code with early returns and clear patterns
+- Implement comprehensive accessibility features by default:
+  - Proper ARIA labels
+  - Keyboard navigation
+  - Screen reader compatibility
+  - Focus management
+- Use consistent and descriptive naming conventions:
+  - Event handlers prefixed with "handle" (e.g. handleClick, handleSubmit)
+  - Clear variable and component names
+  - Type definitions where applicable
+- Treat all interactions as teaching moments:
+  - Explain complex concepts simply
+  - Provide context for decisions
+  - Share best practices and patterns
+  - Guide through problem-solving steps
+- Follow mobile-first and responsive design principles
+- Ensure proper error handling and type safety with TypeScript
+- Optimize for performance and SEO
+
+------------MODE SYSTEM STRUCTURE RULES STRICTLY FOLLOW--------------
+## Mode System Structure
+1. **Overview (Top)**: Current mode status, requirements, and transition (Middle)**: Interactive planning space, confidence tracking, and discussions
+3. **Workspace (Bottom)**: Task details, progress tracking, and documentation links
+
+## Mode Types and Processing Instructions 🤖
+
+### 1. Plan Mode (Input: "plan") 🎯
+**AI Processing Steps**:
+```
+IF user_input == "plan" THEN
+  1. CREATE new Chat Session with format:
+     # Mode: PLAN 🎯
+     Current Task: [Extract task from user input]
+     Understanding: [Parse requirements and constraints]
+     Questions: [Generate clarifying questions]
+     Confidence: [Calculate initial confidence]
+     Next Steps: [Determine required actions]
+
+  2. MONITOR user responses:
+     - READ from Chat Session
+     - UPDATE understanding
+     - RECALCULATE confidence
+     - GENERATE follow-up questions
+
+  3. LOOP until confidence >= 95%:
+     - ASK questions
+     - PROCESS answers
+     - UPDATE confidence
+     - LOG progress
+```
+
+### 2. Composer Agent Mode (Input: "agent") ⚡
+**Activation Requirements**:
+```
+IF (
+  confidence >= 95% AND
+  all_questions_answered == true AND
+  user_input == "agent"
+) THEN
+  ENABLE implementation_mode
+ELSE
+  DISPLAY requirements_not_met_message
+```
+
+**Enabled Capabilities**:
+- Code modifications
+- File operations
+- Command execution
+- System changes
+
+## Mode Transition Protocol 🔄
+**State Machine**:
+```
+State: PLAN
+  ON user_input == "plan":
+    INITIALIZE chat_session
+    SET confidence = initial_assessment
+    WHILE confidence < 95%:
+      PROCESS user_responses
+      UPDATE confidence
+      IF confidence >= 95%:
+        DISPLAY ready_message
+        AWAIT "agent" command
+
+State: AGENT
+  ON user_input == "agent":
+    IF prerequisites_met:
+      ENABLE implementation_mode
+  RETURN to_plan_mode
+```
+
+## Chat Session Format 📝
+**Template Structure**:
+```
+# Mode: [CURRENT_MODE] [EMOJI]
+
+[SECTION: Current Discussion]
+${latest_user_request}
+
+[SECTION: AI Understanding]
+${parsed_requirements}
+
+[SECTION: Questions]
+${generated_questions.map(q => ({
+  question: q,
+  explanation: why_asking,
+  example: relevant_example
+}))}
+
+[SECTION: Confidence]
+Level: ${confidence_score}%
+Clear: ${understood_points}
+Unclear: ${points_needing_clarification}
+
+[SECTION: Next Steps]
+${action_items}
+```
+
+## Implementation Types 🛠️
+1. **Feature Development**:
+   ```
+   MODE: Implementation
+   FOCUS: New functionality
+   REQUIRES:
+     - Detailed planning
+     - Architecture review
+     - Documentation setup
+   ```
+
+2. **Bug Resolution**:
+   ```
+   MODE: Bug Fix
+   FOCUS: Issue resolution
+   REQUIRES:
+     - Problem diagnosis
+     - Root cause analysis
+     - Solution verification
+   ```
+
+------------MEMORY RULES--------------
+
+# Memory rules `@memories.md`
+The memories file serves as a continuous, chronological log of all interactions, decisions, and activities in the project. Follow these rules:
+
+1. **Memory Update Triggers**:
+   a. **Automatic Updates** (Development Mode):
+      - Automatically update during:
+        - Code implementation
+        - Feature development
+        - Bug fixing
+        - Project setup
+        - Configuration changes
+        - Documentation updates
+      - Format: `- [Timestamp] Development: Description of development activity, changes made, and outcomes`
+
+   b. **Manual Updates** (User Triggered):
+      - Trigger word: "mems"
+      - Use for:
+        - Discussion notes
+        - Planning sessions
+        - Requirements gathering
+        - General inquiries
+        - Project status updates
+      - Format: `- [Timestamp] Manual Update: Description of discussion, decisions, or information shared`
+
+2. **Interaction Format**:
+   - Every interaction must be documented in a single, comprehensive line
    - Use "### Interactions" section for all activities
-   - Each interactiocumented in a single, comprehensive line
-   - Format: `- [Timestamp] User/AI Action: Detailed description of what was done, discussed, or deding context, decisions made, and any important outcomes`
-   - Example: `- [2024-02-08 16:20] AI Implementation: Created Card component with accessibility features, hover effects, and TypeScript support, following user's request for modern UI components, including comprehensive documentation and examples for product cards and dashboard widgets`
+   - Format: `- [Timestamp] Type/Action: Detailed description of what was done, discussed, or decided, including context, decisions made, and any important outcomes`
+   - Example: `- [2024-02-08 16:20] Development: Created Card component with accessibility features, hover effects, and TypeScript support, following user's request for modern UI components`
 
-2. **Memory Growth**:
+3. **Memory Growth**:
    - Memories continuously grow as new interactions occur
    - Never delete previous interactions
    - Create `@memories2.md` when reaching 1000 lines
    - Cross-reference between memory files when needed
 
-3. **Memory Organization**:
+4. **Memory Organization**:
    - Keep chronological order
    - Use timestamps for tracking
    - Tag important decisions with #feature, #bug, #improvement
    - Maintain context between related interactions
+   - Prefix entries with appropriate type:
+     - Development: For code/implementation activities
+     - Manual: For user-triggered updates
+     - Planning: For architectural decisions
+     - Discussion: For general conversations
 
-# Lesson learned rules ` [lessons-learned.md](mdc:.cursor/lessons-learned.md) `
-The lessons learned file serves as a knowledge base to prevent repeating mistakes and capture important solutions. Follow these rules:
+------------LESSONS LEARNED RULES STRICTLY FOLLOW--------------
+# Lesson Learned Rules `@lessons-learned.md`
+*Knowledge base for preventing mistakes and capturing solutions. Each lesson must be reusable and valuable for future development.*
 
-1. **Entry Format**:
-   - Use "### Category" sections for organization
-   - Each lesson must be documented in a single, comprehensive line
-   - Format: `- [Timestamp] Lesson Type: Detailed description of the issue, solution, and why it's important to remember`
-   - Example: `- [2024-02-08 16:20] Component Error: When extending base components like TextInput, always verify prop types and exports first to prevent type mismatches, as demonstrated in the DatePicker integration`
+## Entry Structure 📝
+- **Format**: `[Timestamp] Category: Clear description of issue → Solution → Why it matters`
+- **Example**:
+  ```
+  [2024-02-08 16:20] Component Error:
+  Issue: TextInput props incompatible with DatePicker
+  Fix: Verify prop types before extending components
+  Why: Prevents type mismatches and runtime errors
+  ```
 
-2. **Lesson Categories**:
-   - Component Development
-   - TypeScript Implementation
-   - Error Resolution
-   - Performance Optimization
-   - Security Practices
-   - Accessibility Standards
-   - Code Organization
-   - Testing Strategies
+## Categories & Priority System 🎯
+1. **Critical (Fix Immediately)**
+   - Security vulnerabilities
+   - Data integrity issues
+   - Breaking changes
+   - Performance bottlenecks
 
-3. **When to Add Lessons**:
-   - After fixing a bug or error
-   - When discovering a better implementation
-   - After receiving user corrections
-   - When finding reusable patterns
-   - After performance improvements
-   - When establishing new standards
+2. **Important (Address Soon)**
+   - Accessibility improvements
+   - Code organization
+   - Testing coverage
+   - Documentation gaps
 
-4. **Lesson Priority**:
-   - High: Critical fixes and security issues
-   - Medium: Performance and best practices
-   - Low: Style and optimization tips
+3. **Enhancement (When Possible)**
+   - Style optimizations
+   - Refactoring suggestions
+   - Developer experience
 
-5. **Documentation Requirements**:
-   - Clear problem statement
-   - Detailed solution
-   - Why it's important
-   - How to prevent it
-   - Related code examples
-   - Links to relevant commits/files
+## When to Capture ⚡
+- After bug resolution → Document root cause + solution
+- During code review → Note patterns + improvements
+- User feedback → Record usability insights
+- Performance fixes → Log optimization techniques
+- New patterns → Document reusable solutions
 
-6. **Update Protocol**:
-   - Only update when user requests
-   - Focus on reusable solutions
-   - Keep entries concise but complete
+## Documentation Format 📚
+```
+### Category Name
+- [Timestamp] Type:
+  Problem: [What went wrong]
+  Solution: [How it was fixed]
+  Prevention: [How to avoid]
+  Impact: [Why it matters]
+  Example: [Code sample]
+  Links: [Related files/commits]
+```
+
+## Update Protocol 🔄
+1. **Trigger**: User requests or critical discoveries
+2. **Process**:
+   - Evaluate lesson importance
+   - Write clear, actionable entry
+   - Add relevant examples
    - Cross-reference with memories
-   - Tag with appropriate categories
+3. **Review**:
+   - Check for duplicates
+   - Verify solution works
+   - Ensure reusability
+   - Tag appropriately
 
-# Scratchpad rules ` [scratchpad.md](mdc:.cursor/scratchpad.md) `
+## Categories in Detail 🗂️
+1. **Component Development**: Component architecture, prop management, state handling, and event systems.
+
+2. **TypeScript Implementation**: Type definitions, interface design, generic usage, and type guards.
+
+3. **Error Resolution**: Bug patterns, debug strategies, error prevention, and recovery methods.
+
+4. **Performance Optimization**: Load time, runtime speed, memory usage, and network efficiency.
+
+5. **Security Practices**: Data protection, input validation, authentication, and authorization.
+
+6. **Accessibility Standards**: ARIA usage, keyboard nav, screen readers, and color contrast.
+
+7. **Code Organization**: File structure, naming patterns, module design, and code reuse.
+
+8. **Testing Strategies**: Unit tests, integration tests, E2E testing, and test patterns.
+
+-----------------SCRATCHPAD RULES-----------------
+
+# Scratchpad rules `@scratchpad.md`
 The scratchpad serves as a phase-specific task tracker and implementation planner. Follow these rules:
 
 1. **Phase Management**:
@@ -104,193 +315,23 @@ The scratchpad serves as a phase-specific task tracker and implementation planne
    - Link to relevant memories
    - Track confidence scores
 
-------------Plan & Act mode system rules---------------
-## Mode System Structure
-The scratchpad is divided into three main sections:
-
-1. **Mode System Overview (Top Section)**
-   - Always displays current mode status
-   - Contains detailed mode descriptions
-   - Shows mode requirements and transitions
-   - Never delete Line 1 mode system types
-
-2. **Chat Session (Middle Section)**
-   - Format similar to IDE chat interface
-   - Contains current conversation flow
-   - Shows plan details and questions
-   - Maintains user-AI interaction history
-
-3. **Scratchpad Workspace (Bottom Section)**
-   - Contains current task details and progress
-   - Updates based on mode and task status
-   - Tracks implementation progress
-   - Links to relevant documentation
-
-## Mode Types
-
-### Plan Mode (Default - Read Only) 🎯
-- Focus on information gathering and solution architecture
-- Activities include:
-  - Reading and analyzing files
-  - Creating detailed implementation plans
-  - Conducting confidence assessments
-  - Asking beginner-friendly clarifying questions
-- Must achieve 95% confidence before proceeding
-- If confidence is lower:
-  - List specific questions in simple terms
-  - Explain technical concepts in plain language
-  - Break down complex topics into digestible parts
-  - Document assumptions and risks clearly
-- Format for questions:
-  ```
-  Let me ask you some questions to better understand your needs:
-
-  1. [Simple Question]:
-     - What I'm trying to understand: [Explanation in plain terms]
-     - Why this matters: [Simple explanation of importance]
-     - Example: [Relatable example if applicable]
-
-  2. [Technical Question]:
-     - In simple terms: [Plain language version]
-     - Technical details: [Optional detailed explanation]
-     - Why we need this: [Business value explanation]
-  ```
-
-### Act Mode (Requires Manual Activation) ⚡
-- Can ONLY be activated when:
-  - User explicitly types "Act" in the composer
-  - Plan mode is completed with ≥95% confidence
-  - All clarifying questions are answered
-  - User has approved the plan
-- Enables:
-  - Code modifications
-  - File creation/deletion
-  - Command execution
-  - System changes
-
-### Mode Transition Protocol
-1. **Starting State**:
-   - Always begin in Plan Mode
-   - Initialize chat session in scratchpad
-   - Display current confidence level
-
-2. **During Planning**:
-   - Update chat session with each interaction
-   - Track confidence score after each answer
-   - Format questions for beginner understanding
-   - Show clear progress towards 95% threshold
-
-3. **Transition Request**:
-   ```
-   ⚠️ Waiting for Mode Switch
-   - Current Confidence: [XX]%
-   - Missing Information: [List in simple terms]
-   - Next Step: Please type "Act" to proceed with implementation
-   ```
-
-4. **Mode Switch**:
-   - Only after user types "Act"
-   - Verify 95% confidence threshold
-   - Confirm all questions answered
-   - Begin implementation based on plan
-
-### Chat Session Format
-```
-# Mode: PLAN
-
-Summary
-[Brief overview of what we're trying to achieve]
-
-Assumptions
-[List of assumptions in simple terms]
-
-Implementation Steps
-1. [Step one in plain language]
-2. [Step two in plain language]
-   - [Sub-step with more detail]
-   - [Sub-step with more detail]
-
-References
-[Relevant files or documentation]
-
-Confidence Level
-- Current: XX%
-- Reasons for confidence/uncertainty:
-  1. [Simple explanation]
-  2. [Simple explanation]
-
-Questions
-1. [Beginner-friendly question]
-   - Why I'm asking: [Simple explanation]
-   - Example: [Relatable example]
-```
-
-## Implementation Types
-1. **Implementation Mode**
-   - Used when user requests new feature implementation
-   - Focuses on building new functionality
-   - Requires detailed planning and architecture
-
-2. **Bug Fix Mode**
-   - Used when user reports bugs or issues, Focuses on problem diagnosis and resolution and finding the root cause of the issue. Use your chain of thought for debugging process
-
+-----------PROJECT REQUIREMENTS RULES--------------
 # Project Requirements rules `@docs/project-requirements.md`
 The project requirements serve as the absolute source of truth for all development decisions. Follow these strict rules:
 
-1. **Strict Adherence Protocol**:
-   - ALWAYS read project requirements before ANY implementation
-   - NEVER implement features not specified in requirements
-   - IMMEDIATELY warn user about deviations from requirements
-   - STOP implementation if requirements conflict detected
+1. **Strict Adherence Protocol**: ALWAYS read project requirements before ANY implementation, NEVER implement features not specified in requirements, IMMEDIATELY warn user about deviations from requirements, STOP implementation if requirements conflict detected.
 
-2. **Warning System**:
-   - Format: `⚠️ WARNING: [Category] - [Detailed explanation of the issue]`
-   - Categories:
-     - ALIGNMENT: When implementation deviates from requirements
-     - RESTRICTION: When attempting to modify restricted files
-     - DEPENDENCY: When adding non-approved dependencies
-     - ARCHITECTURE: When structure deviates from standards
-     - SCOPE: When implementation exceeds defined scope
+2. **Warning System**: Format `⚠️ WARNING: [Category] - [Detailed explanation of the issue]` with categories including ALIGNMENT (implementation deviations), RESTRICTION (restricted file modifications), DEPENDENCY (non-approved dependencies), ARCHITECTURE (structure deviations), and SCOPE (exceeding defined scope).
 
-3. **Implementation Checklist**:
-   - ✅ Verify feature is in project requirements
-   - ✅ Check implementation phase alignment
-   - ✅ Validate technical stack compliance
-   - ✅ Confirm architectural guidelines
-   - ✅ Review security requirements
-   - ✅ Check performance implications
+3. **Implementation Checklist**: ✅ Verify feature in project requirements, check implementation phase alignment, validate technical stack compliance, confirm architectural guidelines, review security requirements, and check performance implications.
 
-4. **Restricted Operations**:
-   - DO NOT modify project requirements file
-   - DO NOT implement features from future phases
-   - DO NOT add unauthorized dependencies
-   - DO NOT change core architectural decisions
-   - DO NOT bypass security requirements
+4. **Restricted Operations**: DO NOT modify project requirements file, implement features from future phases, add unauthorized dependencies, change core architectural decisions, or bypass security requirements.
 
-5. **Change Management**:
-   - Document ALL deviations from requirements
-   - Require explicit user approval for exceptions
-   - Track technical debt from compromises
-   - Update documentation for approved changes
+5. **Change Management**: Document ALL deviations from requirements, require explicit user approval for exceptions, track technical debt from compromises, and update documentation for approved changes.
 
-6. **Quality Gates**:
-   - Requirements alignment check
-   - Phase compatibility verification
-   - Technical stack validation
-   - Security compliance review
-   - Performance impact assessment
+6. **Quality Gates**: Requirements alignment check, phase compatibility verification, technical stack validation, security compliance review, and performance impact assessment.
 
-7. **Warning Triggers**:
-   Must warn user when:
-   - Implementation deviates from requirements
-   - Attempting to access restricted files
-   - Adding non-approved dependencies
-   - Modifying core architecture
-   - Implementing future phase features
-   - Bypassing security measures
-   - Exceeding phase scope
-   - Breaking established patterns
-   - Compromising performance standards
+7. **Warning Triggers**: Must warn user when implementation deviates from requirements, attempting to access restricted files, adding non-approved dependencies, modifying core architecture, implementing future phase features, bypassing security measures, exceeding phase scope, breaking established patterns, or compromising performance standards.
 
 8. **Warning Format**:
    ```
@@ -301,26 +342,9 @@ The project requirements serve as the absolute source of truth for all developme
    - Suggestion: [How to align with requirements]
    ```
 
-9. **Enforcement Actions**:
-   a. Minor Deviations:
-      - Warn user
-      - Suggest corrections
-      - Continue with caution
-   b. Major Deviations:
-      - Block implementation
-      - Require user confirmation
-      - Document decision
-   c. Critical Deviations:
-      - Stop immediately
-      - Require replanning
-      - Update documentation
+9. **Enforcement Actions**: Handle deviations through Minor (warn user, suggest corrections, continue with caution), Major (block implementation, require user confirmation, document decision), and Critical (stop immediately, require replanning, update documentation) actions.
 
-10. **Documentation Requirements**:
-    - Document all requirement checks
-    - Track approved deviations
-    - Maintain decision log
-    - Update related documentation
-    - Cross-reference with memories
+10. **Documentation Requirements**: Document all requirement checks, track approved deviations, maintain decision log, update related documentation, and cross-reference with memories.
 
 # Documentations of PHASE-* on /docs/phases directory
 Each phase completion requires:
@@ -333,6 +357,3 @@ Each phase completion requires:
    - Lessons learned
 3. Clear phase objectives and achievements
 4. Links to relevant memories and lessons
-
-# Documentations of PHASE-* on /docs/phases directory
-You will create a comprehensive and accurate(100%) PHASE-1 to 7 file on the /docs/phases directory (if it's not exist), you will use this when every phases are completed only!!!
