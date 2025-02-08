@@ -2,32 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    /* Theme Colors */
+    --primary: #4F46E5;
+    --primary-light: #818CF8;
+    --primary-dark: #3730A3;
+
+    --secondary: #64748B;
+    --secondary-light: #94A3B8;
+    --secondary-dark: #475569;
+
+    --accent: #10B981;
+    --accent-light: #34D399;
+    --accent-dark: #059669;
+
+    --error: #F43F5E;
+    --error-light: #FB7185;
+    --error-dark: #E11D48;
+
+    --warning: #F59E0B;
+    --warning-light: #FBBF24;
+    --warning-dark: #D97706;
+
+    --success: #22C55E;
+    --success-light: #4ADE80;
+    --success-dark: #16A34A;
+
+    --background: #F8FAFC;
+    --background-dark: #1E293B;
+
+    --text: #1E293B;
+    --text-muted: #64748B;
+    --text-light: #F8FAFC;
+
+    /* Shadcn Variables */
+    --radius: 0.5rem;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --foreground: 224 71.4% 4.1%;
+  }
 }
 
+/* Base Styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-text antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  /* Improved focus styles for better accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
+  }
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Better text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* Responsive font sizes */
+  h1 {
+    @apply text-4xl font-bold md:text-5xl;
+  }
+  h2 {
+    @apply text-3xl font-semibold md:text-4xl;
+  }
+  h3 {
+    @apply text-2xl font-semibold md:text-3xl;
+  }
+  h4 {
+    @apply text-xl font-semibold md:text-2xl;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* Future Dark Mode (Commented out for now) */
+/*
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: var(--background-dark);
+    --text: var(--text-light);
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+*/
