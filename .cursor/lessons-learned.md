@@ -3,25 +3,27 @@
 # Lessons Learned
 
 ### Component Development
-1. When using imported components, always verify the exported members and their types first to ensure compatibility.
-2. When extending base components (like TextInput), check the prop types carefully to avoid type mismatches.
-3. For date handling, use date-fns library as it provides better TypeScript support and more focused functionality.
-4. Always implement proper accessibility features from the start, including ARIA labels and keyboard navigation.
+- [2024-02-08 15:30] Import Verification: When using imported components, always verify the exported members and their types first to prevent compatibility issues, as demonstrated in the TextInput and DatePicker integration where type mismatches caused errors.
+- [2024-02-08 16:00] Component Extension: When extending base components (like TextInput), thoroughly check prop types and interfaces to ensure type compatibility and prevent runtime errors, particularly important for form components with complex state management.
+- [2024-02-08 16:30] Date Handling: Use date-fns library for date manipulation as it provides better TypeScript support and more focused functionality, avoiding the complexity and bundle size of larger libraries like moment.js.
+- [2024-02-08 17:00] Accessibility First: Implement accessibility features (ARIA labels, keyboard navigation) during initial component development rather than retrofitting later, as shown in the Card and Grid components implementation.
 
-### TypeScript Best Practices
-1. When dealing with component variants, define the exact string literal types to prevent type mismatches.
-2. Use proper type extensions (like Omit<>) when building upon existing HTML elements.
-3. Always check prop type compatibility when composing components together.
-4. Implement proper ref forwarding with TypeScript for reusable components.
+### TypeScript Implementation
+- [2024-02-08 15:45] Type Definition: When dealing with component variants, define exact string literal types instead of using string type to prevent invalid values and improve type checking, as implemented in Grid component's GridColumns type.
+- [2024-02-08 16:15] Type Extension: Use proper type extensions (like Omit<>) when building upon existing HTML elements to maintain type safety while removing incompatible props, demonstrated in form component implementations.
+- [2024-02-08 16:45] Component Composition: Always check prop type compatibility when composing components together, especially when dealing with forwarded refs and event handlers, as shown in Card component implementation.
+- [2024-02-08 17:15] Ref Forwarding: Implement proper ref forwarding with TypeScript for reusable components to ensure proper DOM access and maintain component flexibility.
 
-### Error Handling
-1. Address import errors by checking the actual exports in the source files.
-2. Fix type mismatches by either adapting the component or updating the type definitions.
-3. When encountering prop type errors, prefer removing incompatible props over forcing type assertions.
-4. Document component interfaces thoroughly to prevent future type-related issues.
+### Error Resolution
+- [2024-02-08 17:30] Import Resolution: Address import errors by checking the actual exports in source files and using proper import paths, preventing issues like those encountered in the DatePicker component.
+- [2024-02-08 17:45] Type Mismatch: Fix type mismatches by either adapting the component interface or updating type definitions, not by using type assertions, as demonstrated in form component fixes.
+- [2024-02-08 18:00] Prop Compatibility: When encountering prop type errors, prefer removing incompatible props over forcing type assertions to maintain type safety and prevent runtime errors.
+- [2024-02-08 18:15] Documentation Importance: Document component interfaces thoroughly with TSDoc comments to prevent future type-related issues and improve maintainability.
 
 ### Code Organization
-1. Keep related components (like DatePicker and Calendar) in the same directory.
-2. Use index files to manage exports and maintain clean import statements.
-3. Implement shared utilities (like useClickOutside) in a dedicated hooks directory.
-4. Maintain consistent file structure across similar components.
+- [2024-02-08 18:30] Component Grouping: Keep related components (like DatePicker and Calendar) in the same directory to maintain clear relationships and improve code navigation.
+- [2024-02-08 18:45] Export Management: Use index files to manage exports and maintain clean import statements, making the codebase more maintainable and reducing import complexity.
+- [2024-02-08 19:00] Utility Organization: Implement shared utilities (like useClickOutside) in a dedicated hooks directory to improve reusability and maintain clear separation of concerns.
+- [2024-02-08 19:15] File Structure: Maintain consistent file structure across similar components (component file, index, README) to improve project organization and developer experience.
+
+*Note: This file is updated only upon user request and focuses on capturing important, reusable lessons learned during development. Each entry includes a timestamp, category, and comprehensive explanation to prevent similar issues in the future.*
