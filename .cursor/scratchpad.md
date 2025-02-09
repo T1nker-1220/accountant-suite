@@ -17,149 +17,129 @@ Cross-reference with @memories.md and @lessons-learned.md for context and best p
 
 # Mode: PLAN 🎯
 
-## Phase 2: Data Management Implementation 🚀
+## Phase 1: Calculation Engine Foundation Implementation 🧮
 
 ### Current Task
-Planning and implementing the Data Management phase with three main components:
-1. Authentication System
-2. Cloud Data Migration
-3. Advanced CSV Handling
+Planning and implementing the Calculation Engine Foundation with five main components:
+1. Math.js Integration
+2. Depreciation Calculator
+3. Financial Ratio Formulas
+4. Calculation Validation System
+5. Unit Test Setup
 
 ### Implementation Timeline
-Total Duration: 1-2 weeks
+Total Duration: 5 days
 
 ### Technical Requirements
-1. Authentication System (3 days)
-   - [ ] Supabase auth setup
-     - User authentication flow
-     - Social login integration (if required)
-     - Session management
-     - Security measures
-   - [ ] User profile management
-     - Profile data structure
-     - CRUD operations
-     - Data validation
-   - [ ] Session management
-     - Token handling
-     - Refresh mechanisms
-     - Secure storage
-   - [ ] Basic RBAC roles
-     - Role definitions
-     - Permission system
-     - Access control
 
-2. Cloud Data Migration (4 days)
-   - [ ] Supabase database schema
-     - Table structures
-     - Relationships
-     - Indexes
-     - Constraints
-   - [ ] Local → Cloud migration tool
-     - Data mapping
-     - Migration scripts
-     - Progress tracking
-     - Error handling
-   - [ ] Data encryption at rest
-     - Encryption methods
-     - Key management
-     - Security protocols
-   - [ ] Conflict resolution
-     - Merge strategies
-     - Version control
-     - Data integrity
+1. Math.js Integration (1 day)
+   - [ ] Install and configure math.js
+   - [ ] Create utility wrapper for financial calculations
+   - [ ] Set up TypeScript types
+   - [ ] Implement error handling
+   - [ ] Add documentation
 
-3. Advanced CSV Handling (3 days)
-   - [ ] Bulk import/export
-     - File parsing
-     - Data validation
-     - Progress tracking
-     - Error handling
-   - [ ] Data validation rules
-     - Rule engine
-     - Custom validations
-     - Error reporting
-   - [ ] Template system
-     - Template creation
-     - Mapping rules
-     - Default values
-   - [ ] Error reporting
-     - Detailed messages
-     - Recovery options
-     - Logging system
+2. Depreciation Calculator (1 day)
+   - [ ] Implement straight-line depreciation
+   - [ ] Create reusable calculation hooks
+   - [ ] Add input validation
+   - [ ] Implement result formatting
+   - [ ] Create documentation
+
+3. Financial Ratio Formulas (1 day)
+   - [ ] Implement core financial ratios:
+     - [ ] Liquidity ratios
+     - [ ] Profitability ratios
+     - [ ] Solvency ratios
+     - [ ] Efficiency ratios
+   - [ ] Add validation rules
+   - [ ] Create documentation
+
+4. Calculation Validation System (1 day)
+   - [ ] Implement Zod schemas
+   - [ ] Create validation hooks
+   - [ ] Add error messages
+   - [ ] Implement boundary checks
+   - [ ] Create documentation
+
+5. Unit Test Setup (1 day)
+   - [ ] Set up Jest configuration
+   - [ ] Create test utilities
+   - [ ] Write test cases
+   - [ ] Add test documentation
+   - [ ] Implement CI integration
 
 ### Progress Tracking
-- Current Phase: 2 - Data Management
+- Current Phase: 1 - Calculation Engine Foundation
 - Status: Planning Stage
-- Confidence: 85% (Need clarification on some points)
+- Confidence: Initial Assessment
 
 ### Questions for Implementation
-1. Authentication System:
-   - Which social login providers should we integrate? (e.g., Google, GitHub)
-   - What are the specific password requirements for local auth?
-   - Should we implement 2FA?
-   - What user profile fields are needed beyond basics?
+1. Math.js Integration:
+   - Do we need custom financial functions beyond math.js?
+   - Should we implement caching for complex calculations?
+   - What level of precision is required for calculations?
+   - How should we handle currency calculations?
 
-2. Cloud Migration:
-   - What's the estimated data volume for initial migration?
-   - Do we need a staging environment for testing?
-   - What's the acceptable downtime window for migration?
-   - How should we handle existing data conflicts?
-
-3. CSV Handling:
-   - What are the required CSV column mappings?
-   - Should we support multiple CSV formats?
+2. Depreciation Calculator:
+   - What depreciation methods beyond straight-line are needed?
+   - Should we support multiple currencies?
+   - What date handling requirements exist?
    - What validation rules are needed?
-   - How should we handle partial import failures?
+
+3. Financial Ratios:
+   - Which specific ratios are highest priority?
+   - What industry standards need to be followed?
+   - How should we handle historical data?
+   - What visualization requirements exist?
+
+4. Validation System:
+   - What are the boundary conditions for each calculation?
+   - How should we handle edge cases?
+   - What error message format is preferred?
+   - Should we implement warning thresholds?
+
+5. Testing Strategy:
+   - What test coverage percentage is required?
+   - Should we include performance tests?
+   - How should we mock complex calculations?
+   - What documentation format for tests?
 
 ### Next Steps
-1. **Authentication System**
-   ```
-   - Set up Supabase project
-   - Configure authentication providers
-   - Implement user profile management
-   - Set up RBAC system
-   ```
-
-2. **Cloud Migration**
-   ```
-   - Design database schema
-   - Create migration scripts
-   - Implement encryption
-   - Add conflict resolution
-   ```
-
-3. **CSV Handling**
-   ```
-   - Build import/export system
-   - Create validation engine
-   - Implement template system
-   - Add error handling
-   ```
+1. Await user input on implementation questions
+2. Set up development environment for math.js
+3. Create initial test cases
+4. Begin documentation structure
 
 ### Dependencies
-- Supabase SDK
-- CSV parsing library
-- Encryption libraries
-- Validation framework
+- math.js for calculations
+- Zod for validation
+- Jest for testing
+- TypeScript for type safety
+- date-fns for date calculations
 
-### Security Considerations
-- Implement AES-256 encryption
-- Use secure session management
-- Add rate limiting
-- Implement audit logging
-- Follow GDPR requirements
+### Technical Considerations
+1. Performance:
+   - Optimize calculation speed
+   - Implement caching where needed
+   - Handle large datasets efficiently
 
-### Documentation Requirements
-- API documentation
-- Database schema
-- Security protocols
-- User guides
-- Migration guides
+2. Security:
+   - Validate all inputs
+   - Sanitize numerical data
+   - Prevent calculation exploits
 
-⚠️ WARNING: Before proceeding, we need clarification on:
-1. Social login requirements
-2. Data volume estimates
-3. CSV format specifications
-4. Validation rule details
+3. Accessibility:
+   - Clear error messages
+   - Keyboard navigation
+   - Screen reader support
 
-Please provide these details so we can achieve 95% confidence and move to implementation phase. 😊
+4. Documentation:
+   - Inline TSDoc comments
+   - Usage examples
+   - API documentation
+   - Test coverage reports
+
+
+### Next Steps
+Awaiting user input on implementation questions to proceed with detailed planning.

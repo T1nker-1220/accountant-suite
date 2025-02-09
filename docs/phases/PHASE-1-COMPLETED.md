@@ -1,3 +1,11 @@
+### Phase 1 - Core Accounting Features (2-3 weeks)
+**Implementation Order**:
+1. **Project Infrastructure Setup** (1 day)
+   [x] Supabase initialization
+   [x] Next.js boilerplate with TypeScript
+   [x] Core component structure
+   [x] Error boundary setup
+
 # Phase 1: Core Component Structure & Error Boundaries 🏗️
 
 ## Overview
@@ -174,3 +182,12 @@ Moving to Phase 2 - Data Management:
 - Technical Stack: Next.js 14.1.0, TypeScript
 - Component Standards: WCAG 2.1 AA
 - Design System: Custom financial theme
+
+-----------Project Infrastructure Setup-------------
+
+2. **Calculation Engine Foundation** (5 days) (Next Steps)
+   - [ ] Math.js integration
+   - [ ] Depreciation calculator (straight-line)
+   - [ ] Financial ratio formulas
+   - [ ] Calculation validation system
+   - [ ] Unit test setup
